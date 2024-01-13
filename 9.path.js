@@ -17,6 +17,10 @@ console.log(base);
 const fileName = path.basename('/tmp/maria-secrets-password/password.txt', '.txt');
 console.log(fileName);
 
+//* para obtener la extension de un archivo
+const extension = path.extname('my.super.extension.jpg');
+console.log(extension);
+
 
 
 
