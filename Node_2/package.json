@@ -6,7 +6,7 @@
   "scripts": {
     "dev:1": "nodemon routing.js",
     "dev:2": "nodemon http_server2.js",
-    "dev:3": "node express.js"
+    "dev:3": "node --watch express.js"
   },
   "keywords": [],
   "author": "",
