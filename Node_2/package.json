@@ -6,7 +6,8 @@
   "scripts": {
     "dev:1": "nodemon routing.js",
     "dev:2": "nodemon http_server2.js",
-    "dev:3": "node --watch express.js"
+    "dev:3": "node --watch express.js",
+    "dev:4": "node --watch express_middle.js"
   },
   "keywords": [],
   "author": "",
