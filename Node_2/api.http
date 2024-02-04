@@ -1,1 +1,15 @@
+
+### Recover info 
 GET http://localhost:1234/pokemon/ditto
+
+### Create a pokemon
+POST  http://localhost:1234/pokemon
+Content-Type: application/json
+
+{
+    "name": "ditto",
+    "type": "normal",
+    "moves":[
+        "transform"
+    ]
+}
