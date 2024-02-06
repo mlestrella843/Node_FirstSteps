@@ -8,4 +8,20 @@ GET http://localhost:1234/movies
 GET http://localhost:1234/movies/aa391090-b938-42eb-b520-86ea0aa3917b
 
 ### recuperar una movie por genero
-GET http://localhost:1234/movies?genre=Action
+GET http://localhost:1234/movies?genre=drama
+
+### crear una pelicula
+# POST http://localhost:1234/movies
+# Content-Type: application/json
+
+# {
+#     "title": "La vida es bella",
+#     "year": 2002,
+#     "director": "Steven Spielberg",
+#     "duration": 174,
+#     "poster": "https://i.ebayimg.com/images/g/0hoAAOSwe7peaMLW/s-l1600.jpg",
+#     "genre": [
+#         "Action",
+#     ],
+#       "rate": 9
+# }
