@@ -10,6 +10,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/movies', (req,res) => {
+    const { genre } = req.query;
+    if (genre) {
+        const filterMovies = movies.filter(
+            movie => movie.genre.some(g => g.toLowerCase() === genre.toLocaleLowerCase())
+        )
+        return res.json(filterMovies)
+    }
     res.json(movies);
 });
 

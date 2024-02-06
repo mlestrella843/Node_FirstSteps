@@ -1,11 +1,11 @@
-###
+### endpoint raiz
 GET http://localhost:1234
 
-###
+###Recuperar todas las movies
 GET http://localhost:1234/movies
 
-###
+### recuperar una movie por id
 GET http://localhost:1234/movies/aa391090-b938-42eb-b520-86ea0aa3917b
 
-###
-GET http://localhost:1234/movies?genre=Terror
+### recuperar una movie por genero
+GET http://localhost:1234/movies?genre=Action
