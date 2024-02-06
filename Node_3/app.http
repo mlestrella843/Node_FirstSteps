@@ -1,6 +1,11 @@
 ###
 GET http://localhost:1234
 
-
 ###
 GET http://localhost:1234/movies
+
+###
+GET http://localhost:1234/movies/aa391090-b938-42eb-b520-86ea0aa3917b
+
+###
+GET http://localhost:1234/movies?genre=Terror
