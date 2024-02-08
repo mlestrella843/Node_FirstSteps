@@ -29,7 +29,7 @@ app.get('/movies', (req,res) => {
 app.post('/movies', (req,res) => { 
     const result = validateMovie(req.body);
     if(result.error){
-        return res.status(400).json({ error: result.error.message });
+        return res.status(400).json({ error: JSON.parse(result.error.message) });
     }
     const newMovie = {
         id: crypto.randomUUID(),

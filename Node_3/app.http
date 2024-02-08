@@ -15,7 +15,12 @@ POST http://localhost:1234/movies
 Content-Type: application/json
 
 {
-    "title": "La vida es bella",
-    "year": 2002,
-   
+  "id": "c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf",
+  "title": "The Dark Knight",
+  "year": 2008,
+  "director": "Christopher Nolan",
+  "duration": 152,
+  "poster": "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg",
+  "genre": ["Action", "Crime", "Drama"],
+  "rate": 9.0
 }
