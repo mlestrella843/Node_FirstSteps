@@ -1,10 +1,14 @@
 const express = require('express');
 const crypto = require('node:crypto');
 const movies = require('./movies.json');
+const { validateMovie } = require('./schemas/movies');
+
 const PORT = process.env.PORT ?? 1234
 
 const app = express();
+
 app.use(express.json());
+
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
@@ -17,31 +21,24 @@ app.get('/movies', (req,res) => {
         const filterMovies = movies.filter(
             movie => movie.genre.some(g => g.toLowerCase() === genre.toLocaleLowerCase())
         )
-        return res.json(filterMovies)
-    }
+        return res.json(filterMovies);
+    };
     res.json(movies);
 });
 
-// app.post('/movies', (req,res) => {
+app.post('/movies', (req,res) => { 
+    const result = validateMovie(req.body);
+    if(result.error){
+        return res.status(400).json({ error: result.error.message });
+    }
+    const newMovie = {
+        id: crypto.randomUUID(),
+        ...result.data
+    }
+    movies.push(newMovie);
 
-//         duration,
-//         rate,
-//         poster
-//     } = req.body;
-
-//     const newMovie = {
-//         id: crypto.randomUUID(),
-//         title,
-//         genre,
-//         year,
-//         director,
-//         duration,
-//         rate,
-//         poster
-//     }
-//     movies.push(newMovie);
-//     res.status(201).json(newMovie)
-// })
+    res.status(201).json(newMovie);
+})
 
 app.get('/movies/:id', (req,res) => { //path to regexp
     const { id } = req.params;
