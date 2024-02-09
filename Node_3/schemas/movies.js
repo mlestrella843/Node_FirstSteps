@@ -8,7 +8,7 @@ const movieSchema = z.object({
     year: z.number().int().min(1900).max(2024),
     director: z.string(),
     duration: z.number().int().positive(),
-    rate: z.number().int().min(0).max(10),
+    rate: z.number().int().min(0).max(10).default(5),
     poster: z.string().url({
         message: 'Poster must be a valid url'
     }),

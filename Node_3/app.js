@@ -6,9 +6,7 @@ const { validateMovie } = require('./schemas/movies');
 const PORT = process.env.PORT ?? 1234
 
 const app = express();
-
 app.use(express.json());
-
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
@@ -34,10 +32,10 @@ app.post('/movies', (req,res) => {
     const newMovie = {
         id: crypto.randomUUID(),
         ...result.data
-    }
+    }   
     movies.push(newMovie);
-
-    res.status(201).json(newMovie);
+    res.json(movies);
+   // res.status(201).json(newMovie);
 })
 
 app.get('/movies/:id', (req,res) => { //path to regexp
