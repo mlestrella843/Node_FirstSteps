@@ -17,11 +17,19 @@ Content-Type: application/json
 {
   "sql": "SELECT from users",
   "id": "c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf",
-  "title": "The Dark Knight VI",
-  "year": 2009,
+  "title": "The Dark Knight III",
+  "year": 2006,
   "director": "Christopher Nolan",
-  "duration": 123,
+  "duration": 150,
   "poster": "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg",
   "genre": ["Action", "Crime", "Drama"],
   "rate": 9.0
+}
+
+###  Update a movie
+PATCH http://localhost:1234/movies/aa391090-b938-42eb-b520-86ea0aa3917b
+Content-Type: application/json
+
+{
+  "year": 2018
 }
