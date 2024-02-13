@@ -9,12 +9,22 @@ const app = express();
 app.use(express.json());
 app.disable('x-powered-by');
 
+// const ACCEPTED_ORIGINS = [
+//     'http://localhost:8080',
+//     'http://localhost:1234/movies',
+//     'https://movies.com',
+//     'https://marialestrella.com'
+// ]
+
 app.get('/', (req, res) => {
     res.json({ message: 'Hola mundo'});
 });
 
 app.get('/movies', (req,res) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    // const origin = res.header('origin')
+    // if(ACCEPTED_ORIGINS.includes(origin) || !origin) {
+    res.header('Access-Control-Allow-Origin', '*' );
+   // }
     const { genre } = req.query;
     if (genre) {
         const filterMovies = movies.filter(
@@ -38,6 +48,21 @@ app.post('/movies', (req,res) => {
     res.json(movies);
    // res.status(201).json(newMovie);
 })
+
+app.delete('/movies/:id', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*' );
+    const { id } = req.params
+    const movieIndex = movies.findIndex(movie => movie.id === id)
+  
+    if (movieIndex === -1) {
+      return res.status(404).json({ message: 'Movie not found' })
+    }
+  
+    movies.splice(movieIndex, 1)
+  
+    return res.json({ message: 'Movie deleted' })
+  })
+
 
 app.get('/movies/:id', (req,res) => { //path to regexp
     const { id } = req.params;
@@ -68,6 +93,12 @@ app.patch('/movies/:id', (req,res) => { //path to regexp
     return res.json(updateMovie);
 
 });
+
+app.options('/movies/:id', (req,res) => {
+    res.header('Access-Control-Allow-Origin', '*' );
+    res.header('Access-Control-Allow-Methods', 'DELETE, POST, PUT, PATCH, GET' );
+    res.send(200)
+})
 
 
 app.listen(PORT, () => {
