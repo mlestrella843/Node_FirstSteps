@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "picocolors": "1.0.0"
   }
-  
 }
