@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/movies', (req,res) => {
+    res.header('Access-Control-Allow-Origin', '*');
     const { genre } = req.query;
     if (genre) {
         const filterMovies = movies.filter(
@@ -67,11 +68,6 @@ app.patch('/movies/:id', (req,res) => { //path to regexp
     return res.json(updateMovie);
 
 });
-
-
-
-
-
 
 
 app.listen(PORT, () => {
